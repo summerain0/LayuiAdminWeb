@@ -1,0 +1,212 @@
+html {
+    color: #666;
+    background-color: #f2f2f2;
+}
+
+/* 添加过渡动画 */
+.layui-layout-admin .layui-nav,
+.layui-layout-admin .admin-pagetabs,
+.layui-layout-admin .layui-header .layui-layout-right,
+.layui-layout-admin .layui-header .layui-nav .layui-nav-item,
+.layui-layout-admin .layui-layout-left,
+.layui-layout-admin .layui-logo,
+.layui-layout-admin .layui-side,
+.layui-layout-admin .layui-body {
+    transition: all 0.35s;
+    -webkit-transition: all 0.35s
+}
+
+/* 头部 */
+.layui-layout-admin .layui-header {
+    background-color: white;
+    height: 50px;
+}
+
+.layui-layout-admin .layui-header li a, .layui-layout-admin .layui-header li a:hover {
+    color: #333;
+    font-size: 14px;
+}
+
+.layui-layout-admin .layui-header .layui-nav-bar {
+    height: 2px;
+    top: 0 !important;
+    bottom: auto;
+    background-color: #20222A;
+}
+
+.layui-layout-admin .layui-header .layui-nav .layui-nav-item {
+    height: 50px;
+    line-height: 50px;
+}
+
+.layui-layout-admin .layui-header .layui-nav .layui-this:after {
+    display: none;
+}
+
+.layui-layout-admin .layui-layout-left a, .layui-layout-admin .layui-layout-left {
+    left: 220px;
+}
+
+.layui-layout-admin .layui-layout-left a, .layui-layout-admin .layui-layout-right {
+    padding: 0;
+}
+
+.layui-layout-admin .layui-layout-left .layui-nav-item {
+    margin: 0 16px;
+}
+
+/* 抽屉 */
+.layui-layout-admin .layui-side {
+    width: 220px;
+    top: 0;
+    z-index: 1001;
+    background-color: #20222A;
+    color: #fff;
+}
+
+.layui-layout-admin .layui-nav-side {
+    background-color: #20222A;
+    color: #fff;
+}
+
+.layui-side-menu .layui-nav {
+    width: 220px;
+    margin-top: 50px;
+}
+
+.layui-side-menu .layui-nav .layui-nav-item a {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 45px;
+    padding-right: 30px;
+}
+
+.layui-side-menu .layui-nav .layui-nav-item .layui-icon {
+    position: absolute;
+    left: 20px;
+}
+
+.layui-nav-side .layui-nav-mored, .layui-nav-itemed > a .layui-nav-more {
+    right: 15px;
+}
+
+.layui-side-menu .layui-nav .layui-nav-child .layui-nav-child a {
+    padding-left: 60px;
+}
+
+.layui-layout-admin .layui-logo {
+    color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+    width: 220px;
+    height: 49px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 50px;
+    font-weight: 300;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* 中小屏幕完全收起，大屏幕保留图标部分 */
+@media screen and (max-width: 992px) {
+    .layui-layout-admin .layui-side {
+        transform: translate3d(-220px, 0, 0);
+        -webkit-transform: translate3d(-220px, 0, 0);
+        width: 220px
+    }
+
+    .layui-layout-admin .layui-layout-left,
+    .layui-layout-admin .layui-body {
+        left: 0
+    }
+}
+
+/* 大屏幕侧边栏收缩 */
+.admin-side-shrink .layui-side {
+    left: 0;
+    width: 60px
+}
+
+.admin-side-shrink .layui-layout-admin .layui-layout-left {
+    left: 60px;
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav {
+    position: static;
+    width: 60px
+}
+
+/* 抽屉图标 */
+.admin-side-shrink .layui-layout-admin .layui-logo span,
+.admin-side-shrink .layui-nav-tree .layui-nav-bar {
+    display: none
+}
+
+.admin-side-shrink .layui-layout-admin .layui-logo {
+    width: 60px;
+    /* background-image: url(/assets/image/logo.png);  可以自己设置图片*/
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav {
+    position: static;
+    width: 60px
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav-item {
+    position: static
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav-item > a {
+    padding-right: 0
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav-item cite,
+.admin-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > .layui-nav-child,
+.admin-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > a .layui-nav-more {
+    display: none;
+    padding: 8px 0;
+    width: 220px
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav > .layui-nav-itemed > a {
+    background: rgba(0, 0, 0, 0.3)
+}
+
+/* 移动端打开抽屉时的遮罩层 */
+.admin-body-shade {
+    position: fixed;
+    display: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 1000;
+}
+
+/* 中小屏幕展开 */
+.admin-side-spread-sm .admin-pagetabs,
+.admin-side-spread-sm .layui-layout-admin .layui-body,
+.admin-side-spread-sm .layui-layout-admin .layui-layout-left {
+    left: 0;
+    transform: translate3d(220px, 0, 0);
+    -webkit-transform: translate3d(220px, 0, 0)
+}
+
+.admin-side-spread-sm .layui-layout-admin .layui-layout-right {
+    transform: translate3d(220px, 0, 0);
+    -webkit-transform: translate3d(220px, 0, 0)
+}
+
+.admin-side-spread-sm .layui-side {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0)
+}
+
+.admin-side-spread-sm .admin-body-shade {
+    display: block
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>LayuiAdminWeb后台模板</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/libs/layui/css/layui.css">
+    <link rel="stylesheet" href="./assets/css/admin.css">
+</head>
+<body>
+
+<div id="adminContainer">
+    <div class="layui-layout layui-layout-admin">
+        <!-- 头部 -->
+        <div class="layui-header">
+            <ul class="layui-nav layui-layout-left">
+                <!-- 侧边伸缩 -->
+                <li class="layui-nav-item">
+                    <a href="javascript:" admin-header-event="flexible" title="抽屉伸缩">
+                        <i class="layui-icon layui-icon-shrink-right"></i>
+                    </a>
+                </li>
+                <!-- 刷新 -->
+                <li class="layui-nav-item">
+                    <a href="javascript:" admin-header-event="refresh" title="刷新">
+                        <i class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <!-- 全屏 -->
+                <li class="layui-nav-item layui-hide-xs">
+                    <a href="javascript:" admin-header-event="fullScreen" title="全屏">
+                        <i class="layui-icon layui-icon-screen-full"></i>
+                    </a>
+                </li>
+                <!-- 用户 -->
+                <li class="layui-nav-item">
+                    <a href="javascript:">
+                        <img id="admin-head-img"
+                             src="https://cloud.summerain0.club/file/head/df13681b075136ad080abf9328469699"
+                             class="layui-nav-img" alt="头像">
+                        <cite id="header-admin-nick">管理员</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:" lay-href="/view/admin/base.html">基本资料</a></dd>
+                        <dd><a href="javascript:" lay-href="/view/admin/update_password.html">修改密码</a></dd>
+                        <dd><a href="javascript:" admin-header-event="logout">退出登录</a></dd>
+                    </dl>
+                </li>
+                <!-- 更多 -->
+                <li class="layui-nav-item" admin-header-event="more">
+                    <a href="javascript:" id="header-more">
+                        <i class="layui-icon layui-icon-more-vertical"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 抽屉 -->
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <div class="layui-logo">
+                    <span>LayuiAdminWeb</span>
+                </div>
+                <ul class="layui-nav layui-nav-tree layui-nav-side" lay-filter="admin-nav">
+                    <li class="layui-nav-item layui-this">
+                        <a href="javascript:">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <cite>首页</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <cite>首页</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:">
+                            <i class="layui-icon layui-icon-user"></i>
+                            <cite>用户管理</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:" lay-href="/view/user/list.html">用户列表</a></dd>
+                            <dd><a href="javascript:" lay-href="/view/user/relevant_settings.html">用户相关设置</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <cite>首页</cite>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 遮罩层 -->
+        <div class="admin-body-shade"></div>
+    </div>
+</div>
+
+<script src="./assets/libs/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/assets/js/modules/',
+        version: true
+    }).use('index');
+</script>
+</body>
+</html>
