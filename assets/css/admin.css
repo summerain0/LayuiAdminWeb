@@ -55,6 +55,157 @@ html {
     margin: 0 16px;
 }
 
+/* 标签 */
+.admin-pagetabs {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    left: 220px;
+    z-index: 999;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 80px 0 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.admin-pagetabs .layui-tab-title {
+    padding: 0;
+    border: 0;
+
+}
+
+.admin-pagetabs .layui-tab-title li:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 0;
+    background-color: #292B34;
+    transition: all .3s;
+    -webkit-transition: all .3s
+}
+
+.admin-pagetabs .layui-tab-title li:hover:after {
+    width: 100%
+}
+
+.admin-pagetabs .layui-tab-title li.layui-this:after {
+    width: 100%;
+    border: none;
+    height: 2px;
+    background-color: #292B34;
+}
+
+.admin-pagetabs .layui-tab-title li:first-child {
+    padding-right: 15px;
+}
+
+/* 标签选中/聚焦时灰色背景反馈 */
+.admin-pagetabs .layui-tab-title li.layui-this,
+.admin-pagetabs .layui-tab-title li:hover {
+    background-color: #f6f6f6;
+}
+
+.admin-pagetabs .layui-tab-title li {
+    min-width: 0;
+    line-height: 40px;
+    max-width: 160px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-right: 1px solid #f6f6f6;
+    vertical-align: top;
+}
+
+/* 隐藏首页标签的关闭按钮 */
+.admin-pagetabs .layui-tab-title li:first-child .layui-tab-close {
+    display: none;
+}
+
+/* 标签的关闭按钮 */
+.admin-pagetabs .layui-tab-title li .layui-tab-close:hover {
+    border-radius: 100%;
+    background-color: #FF5722;
+    color: #fff;
+}
+
+.admin-pagetabs .admin-tabs-control {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    box-sizing: border-box;
+    border-left: 1px solid #f6f6f6;
+}
+
+.admin-pagetabs .admin-tabs-control:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 标签水平移动按钮 */
+.admin-pagetabs .layui-icon-prev {
+    left: 0;
+    border-left: none;
+    border-right: 1px solid #f6f6f6;
+}
+
+.admin-pagetabs .layui-icon-next {
+    right: 40px;
+}
+
+.admin-pagetabs .layui-icon-down {
+    right: 0;
+}
+
+.admin-pagetabs .layui-tab {
+    margin: 0;
+    overflow: hidden;
+}
+
+.admin-tabs-select.layui-nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: 0 0
+}
+
+.admin-tabs-select.layui-nav .layui-nav-item .layui-nav-more {
+    display: none;
+}
+
+.admin-tabs-select.layui-nav .layui-nav-item {
+    line-height: 40px
+}
+
+.admin-tabs-select.layui-nav .layui-nav-item > a {
+    height: 40px
+}
+
+.admin-tabs-select.layui-nav .layui-nav-item a {
+    color: #666
+}
+
+.admin-tabs-select.layui-nav .layui-nav-child {
+    top: 40px;
+    left: auto;
+    right: 0
+}
+
+.admin-tabs-select.layui-nav .layui-nav-child dd.layui-this, .admin-tabs-select.layui-nav .layui-nav-child dd.layui-this a {
+    background-color: #f2f2f2 !important;
+    color: #333
+}
+
 /* 抽屉 */
 .layui-layout-admin .layui-side {
     width: 220px;
@@ -111,6 +262,40 @@ html {
     background-position: center center;
 }
 
+/* 主体内容 */
+.layui-layout-admin .layui-body .admin-tabsbody-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    display: block !important;
+}
+
+.admin-iframe {
+    border: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.layui-layout-admin .layui-body {
+    top: 90px;
+    bottom: 0;
+    position: absolute;
+    left: 220px;
+    right: 0;
+    z-index: 998;
+    width: auto;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
 /* 中小屏幕完全收起，大屏幕保留图标部分 */
 @media screen and (max-width: 992px) {
     .layui-layout-admin .layui-side {
@@ -131,7 +316,9 @@ html {
     width: 60px
 }
 
-.admin-side-shrink .layui-layout-admin .layui-layout-left {
+.admin-side-shrink .layui-layout-admin .layui-layout-left,
+.admin-side-shrink .admin-pagetabs,
+.admin-side-shrink .layui-layout-admin .layui-body {
     left: 60px;
 }
 
@@ -184,13 +371,73 @@ html {
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1000;
 }
 
-/* 中小屏幕展开 */
+/* 对手机和平板收缩抽屉 */
+@media screen and (max-width: 992px) {
+    .layui-layout-admin .layui-side {
+        transform: translate3d(-220px, 0, 0);
+        -webkit-transform: translate3d(-220px, 0, 0);
+        width: 220px
+    }
+
+    .layui-layout-admin .admin-pagetabs,
+    .layui-layout-admin .layui-layout-left,
+    .layui-layout-admin .layui-body {
+        left: 0
+    }
+}
+
+/* 非手机、平板端收缩 */
+.admin-side-shrink .layui-layout-admin .layui-logo {
+    width: 60px;
+    /*background-image: url(/assets/image/logo.png);*/
+}
+
+.admin-side-shrink .layui-layout-admin .layui-logo span {
+    display: none
+}
+
+.admin-side-shrink .layui-side {
+    left: 0;
+    width: 60px
+}
+
+.admin-side-shrink .admin-pagetabs,
+.admin-side-shrink .layui-layout-admin .layui-layout-left,
+.admin-side-shrink .layui-layout-admin .layui-body {
+    left: 60px;
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav {
+    position: static;
+    width: 60px
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav-item {
+    position: static
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav-item > a {
+    padding-right: 0
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav-item cite, .admin-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > .layui-nav-child, .admin-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > a .layui-nav-more {
+    display: none;
+    padding: 8px 0;
+    width: 220px
+}
+
+.admin-side-shrink .layui-side-menu .layui-nav > .layui-nav-itemed > a {
+    background: rgba(0, 0, 0, 0.3)
+}
+
+/* 手机抽屉展开 */
 .admin-side-spread-sm .admin-pagetabs,
 .admin-side-spread-sm .layui-layout-admin .layui-body,
+.admin-side-spread-sm .layui-layout-admin .layui-footer,
 .admin-side-spread-sm .layui-layout-admin .layui-layout-left {
     left: 0;
     transform: translate3d(220px, 0, 0);

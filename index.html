@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>LayuiAdminWeb后台模板</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/libs/layui/css/layui.css">
-    <link rel="stylesheet" href="./assets/css/admin.css">
+    <link rel="stylesheet" href="/assets/libs/layui/css/layui.css">
+    <link rel="stylesheet" href="/assets/css/admin.css">
 </head>
 <body>
 
@@ -43,8 +43,8 @@
                         <cite id="header-admin-nick">管理员</cite>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:" lay-href="/view/admin/base.html">基本资料</a></dd>
-                        <dd><a href="javascript:" lay-href="/view/admin/update_password.html">修改密码</a></dd>
+                        <dd><a href="javascript:" admin-href="/view/admin/base.html">基本资料</a></dd>
+                        <dd><a href="javascript:" admin-href="/view/admin/update_password.html">修改密码</a></dd>
                         <dd><a href="javascript:" admin-header-event="logout">退出登录</a></dd>
                     </dl>
                 </li>
@@ -57,6 +57,31 @@
             </ul>
         </div>
 
+        <!-- 标签 -->
+        <div class="admin-pagetabs">
+            <div class="layui-icon layui-icon-prev admin-tabs-control"></div>
+            <div class="layui-icon layui-icon-next admin-tabs-control"></div>
+            <div class="layui-icon admin-tabs-control layui-icon-down">
+                <ul class="layui-nav admin-tabs-select" lay-filter="admin-pagetabs-nav">
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:"></a>
+                        <dl class="layui-nav-child layui-anim-fadein">
+                            <dd><a href="javascript:">关闭当前标签页</a></dd>
+                            <dd><a href="javascript:">关闭其它标签页</a></dd>
+                            <dd><a href="javascript:">关闭全部标签页</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-tab" lay-unauto lay-allowclose="true" lay-filter="admin-layout-tabs">
+                <ul class="layui-tab-title">
+                    <li class="layui-this" lay-id="/view/home.html">
+                        <i class="layui-icon layui-icon-home"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <!-- 抽屉 -->
         <div class="layui-side layui-side-menu">
             <div class="layui-side-scroll">
@@ -65,13 +90,7 @@
                 </div>
                 <ul class="layui-nav layui-nav-tree layui-nav-side" lay-filter="admin-nav">
                     <li class="layui-nav-item layui-this">
-                        <a href="javascript:">
-                            <i class="layui-icon layui-icon-home"></i>
-                            <cite>首页</cite>
-                        </a>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:">
+                        <a href="javascript:" admin-href="/view/home.html">
                             <i class="layui-icon layui-icon-home"></i>
                             <cite>首页</cite>
                         </a>
@@ -82,17 +101,51 @@
                             <cite>用户管理</cite>
                         </a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:" lay-href="/view/user/list.html">用户列表</a></dd>
-                            <dd><a href="javascript:" lay-href="/view/user/relevant_settings.html">用户相关设置</a></dd>
+                            <dd><a href="javascript:" admin-href="/view/user/list.html">用户列表</a></dd>
+                            <dd><a href="javascript:" admin-href="/view/user/relevant_settings.html">用户相关设置</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:">
-                            <i class="layui-icon layui-icon-home"></i>
-                            <cite>首页</cite>
+                            <i class="layui-icon layui-icon-speaker"></i>
+                            <cite>公告管理</cite>
                         </a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:" admin-href="/view/notice/publish.html">发布公告</a></dd>
+                            <dd><a href="javascript:" admin-href="/view/notice/list.html">公告列表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:">
+                            <i class="layui-icon layui-icon-set"></i>
+                            <cite>设置</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:">系统设置</a>
+                                <dl class="layui-nav-child">
+                                    <dd><a admin-href="/view/settings/web.html">网站设置</a></dd>
+                                    <dd><a admin-href="/view/settings/smtp.html">邮件服务</a></dd>
+                                </dl>
+                            </dd>
+                            <dd>
+                                <a href="javascript:">管理员设置</a>
+                                <dl class="layui-nav-child">
+                                    <dd><a admin-href="/view/admin/base.html">基本资料</a></dd>
+                                    <dd><a admin-href="/view/admin/update_password.html">修改密码</a></dd>
+                                    <dd><a admin-href="/view/settings/config.html">后台设置</a></dd>
+                                </dl>
+                            </dd>
+                        </dl>
                     </li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- 主体 -->
+        <div class="layui-body">
+            <div class="admin-tabsbody-item layui-show">
+                <iframe src="/view/home.html?t=0.123456789" class="admin-iframe" style="display: block;"></iframe>
             </div>
         </div>
 
@@ -101,7 +154,7 @@
     </div>
 </div>
 
-<script src="./assets/libs/layui/layui.js"></script>
+<script src="/assets/libs/layui/layui.js"></script>
 <script>
     layui.config({
         base: '/assets/js/modules/',
