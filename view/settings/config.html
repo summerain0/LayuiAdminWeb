@@ -9,18 +9,30 @@
 </head>
 <body>
 <div class="layui-card">
-    <div class="layui-card-header">卡片面板</div>
+    <div class="layui-card-header">后台设置</div>
     <div class="layui-card-body">
-        卡片式面板面板通常用于非白色背景色的主体内<br>
-        从而映衬出边框投影
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">页面常驻</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox" name="keepAlive" lay-skin="switch" value="1" lay-text="启用|禁用">
+                </div>
+                <div class="layui-form-mid layui-word-aux">保持标签页面状态，切换时不会被销毁</div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="ConfigFormSubmit">保存并刷新</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <script src="/assets/libs/layui/layui.js"></script>
 <script>
-    // layui.config({
-    //     base: '/assets/js/modules/',
-    //     version: true
-    // }).use('index');
+    layui.config({
+        base: '/assets/js/modules/',
+        version: true
+    }).use('settings/config');
 </script>
 </body>
 </html>

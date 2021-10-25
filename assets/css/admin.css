@@ -393,7 +393,7 @@ html {
 /* 非手机、平板端收缩 */
 .admin-side-shrink .layui-layout-admin .layui-logo {
     width: 60px;
-    /*background-image: url(/assets/image/logo.png);*/
+    background-image: url(/assets/image/logo.png);
 }
 
 .admin-side-shrink .layui-layout-admin .layui-logo span {

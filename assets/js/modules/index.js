@@ -6,7 +6,7 @@ layui.extend({
     const $ = layui.jquery;
     const util = layui.util;
     const globalData = layui.data('global');
-    const isKeepAliveMode = globalData.keepAlive || globalConfig.keepAlive;
+    const isKeepAliveMode = globalData.keepAlive === undefined ? globalConfig.keepAlive : globalData.keepAlive;
 
     // 标签过滤名
     const tabFilterName = 'admin-layout-tabs';
@@ -80,10 +80,14 @@ layui.extend({
                 else self.css('display', 'block');
             });
         } else {
-            const url = viewPath + '?t=' + Math.random();
-            const iframeHTML = '<iframe src="' + url + '" class="admin-iframe" style="display: block;"></iframe>';
-            iframeGroupContainer.empty();
-            iframeGroupContainer.append(iframeHTML);
+            const currentIframe = getCurrentIframe();
+            const src = currentIframe.attr('src');
+            if (!src.startsWith(viewPath)) {
+                const url = viewPath + '?t=' + Math.random();
+                const iframeHTML = '<iframe src="' + url + '" class="admin-iframe" style="display: block;"></iframe>';
+                iframeGroupContainer.empty();
+                iframeGroupContainer.append(iframeHTML);
+            }
         }
     };
 
@@ -196,6 +200,8 @@ layui.extend({
         const title = self.html();
         addTab(attr, title);
         addPage(attr);
+
+        if (isSpreadDrawer() && $(window).width() < 994) shrinkDrawer();
     });
 
     //头部事件
